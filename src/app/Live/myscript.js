@@ -31,7 +31,7 @@ const MyWebcam = () => {
     canvas.width=600
     canvas.length=600
     const context = canvas.getContext('2d')
-    let con =context.drawImage(videoRef.current, 0, 0, 600, 600);
+    let con =context.drawImage(videoRef.current, 0, 0, 600, 150);
     const imgUrl = canvas.toDataURL('image/png');
     const img= document.getElementById("picture")
     img.src = imgUrl
