@@ -1,0 +1,31 @@
+video {
+    float: left;
+    padding-left: 5%;
+    padding-top: 5%;
+}
+
+img {
+    float: right;
+    padding-right: 5%;
+    padding-top: 5%;
+}
+
+button {
+    background-color: #04AA6D;
+    border: none;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    border-radius: 50%;
+    position: fixed;
+    top: 30%;
+    left: 40%;
+}
+
+.component {
+    background-color: rgb(192, 251, 183);
+}
