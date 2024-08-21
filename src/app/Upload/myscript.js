@@ -1,4 +1,6 @@
 'use client'
+
+
 const MyInput = () => {
 
     const ImageUploaded = () => {
@@ -11,27 +13,36 @@ const MyInput = () => {
     }
 
 
-    const SendToModel = (submitedImage) => {
-
+    const SendToModel = () => {
+        fetch("http://localhost:8080/results").then(
+            response => response.json()).then(
+                data => {
+                    
+                    let ex =  document.getElementById("translation")
+                    ex.textContent = data.message
+                }
+            )
     }
 
 
 return (        
-<html>
+
     <div>
         <h2>Upload Images</h2>
-    </div>
 
 <div className="input-div">
     <p>Drag and drop images here or <span className ="browse"></span></p>
-    <input type="file" id ="file" multiple="multiple" onClick={ImageUploaded}></input>
+    <input type="file" id ="file" onClick={ImageUploaded}></input>
     <img id="picture" width="900" height="900"></img>
-    <button id="submit" onClick={SendToModel}></button>
+    
+    
+    <button id="submit" onClick={SendToModel}>Submit</button>
+    <p id="translation">Transition</p>
 </div>
 
 <div>
     <img></img>
 </div>
-</html>
+</div>
 )}
 export default MyInput
