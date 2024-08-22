@@ -2,8 +2,8 @@ import MyWebcam from "./myscript.js";
 
 export default function Live(){
 return(
-    <html>
+    <div>
         <MyWebcam />
-    </html>
+    </div>
 );
 }
