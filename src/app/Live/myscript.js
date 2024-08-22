@@ -36,6 +36,8 @@ const MyWebcam = () => {
     const img= document.getElementById("picture")
     img.src = imgUrl
     }
+
+    
   }
 
   return (
