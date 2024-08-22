@@ -1,5 +1,5 @@
 'use client'
-
+import './upload.css'
 
 const MyInput = () => {
 
@@ -27,7 +27,7 @@ const MyInput = () => {
 
 return (        
 
-    <div>
+   /* <div>
         <h2>Upload Images</h2>
 
 <div className="input-div">
@@ -42,6 +42,19 @@ return (
 
 <div>
     <img></img>
+</div>
+</div>*/
+
+
+
+<div className="fullscreen-container">
+<div className="input-div">
+    <h2>Upload Images</h2>
+    <p>Drag and drop images here or <span className="browse">browse</span></p>
+    <input type="file" id="file" onChange={ImageUploaded} />
+    <img id="picture" alt="Uploaded" />
+    <button id="submit" onClick={SendToModel}>Submit</button>
+    <p id="translation">Translation</p>
 </div>
 </div>
 )}

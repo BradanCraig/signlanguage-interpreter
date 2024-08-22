@@ -1,0 +1,105 @@
+/* Reset default browser styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Full screen styling */
+  html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Prevents scrolling of the body */
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Main container to use full screen */
+  .fullscreen-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
+    height: 100vh; /* Full viewport height */
+    width: 100vw; /* Full viewport width */
+    background-color: #f4f4f4;
+    padding: 20px;
+    overflow-y: auto; /* Enable vertical scrolling if needed */
+  }
+  
+  /* Container for the content (image upload) */
+  .input-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 100%;
+    max-width: 600px; /* Limit the width of the container */
+  }
+  
+  /* Styling for the heading */
+  h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #007BFF; /* Blue color for the header */
+    text-align: center;
+  }
+  
+  /* Drag and drop container styling */
+  .input-div p {
+    font-size: 1.1em;
+    text-align: center;
+    color: #666;
+    margin-bottom: 20px;
+  }
+  
+  /* File input styling */
+  input[type="file"] {
+    display: block;
+    margin: 10px 0;
+    font-size: 1em;
+  }
+  
+  /* Image styling */
+  img#picture {
+    width: 100%;
+    max-width: 500px; /* Set maximum width for the image */
+    height: auto;
+    margin: 20px 0;
+    border: 3px solid #007BFF;
+    border-radius: 8px;
+    background-color: #fff;
+  }
+  
+  /* Button styling */
+  button {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    margin-top: 20px;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  button:focus {
+    outline: none;
+  }
+  
+  /* Translation text styling */
+  #translation {
+    font-size: 1.1em;
+    color: #333;
+    margin-top: 20px;
+  }
+  
