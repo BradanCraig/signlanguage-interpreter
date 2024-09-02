@@ -2,49 +2,48 @@
 import './upload.css'
 
 const MyInput = () => {
-
+    var img
     const ImageUploaded = () => {
             let input = document.getElementById("file") //Get image
-            input.onchange = () => {
-                const img = input.files[0]
+                img = input.files[0]
                 let final= document.getElementById("picture") //access displayed tag for image
                 final.src = URL.createObjectURL(img)
-            }
+            
     }
 
 
-    const SendToModel = () => {
-        fetch("http://localhost:8080/results").then(
-            response => response.json()).then(
-                data => {
+    const SendToModel = async () => {
+        // fetch("http://localhost:8080/results").then(
+        //     response => response.json()).then(
+        //         data => {
                     
-                    let ex =  document.getElementById("translation")
-                    ex.textContent = data.message
-                }
-            )
+        //             let ex =  document.getElementById("translation")
+        //             ex.textContent = data.message
+        //         }
+        //     )
+
+
+            const formData = new FormData()
+            formData.append('file', img)
+            console.log("pre JSON fetching")
+            console.log(img)
+        try {
+           const response = await fetch("http://localhost:8080/results", {
+            method: 'POST',
+            body: formData
+           });
+           console.log(response)
+           const data = await response.json();
+           console.log('Response:', data);
+           let ex =  document.getElementById("translation")
+           ex.textContent = data.message
+            }
+        catch(error){
+            console.error(error)        }
     }
 
 
 return (        
-
-   /* <div>
-        <h2>Upload Images</h2>
-
-<div className="input-div">
-    <p>Drag and drop images here or <span className ="browse"></span></p>
-    <input type="file" id ="file" onClick={ImageUploaded}></input>
-    <img id="picture" width="900" height="900"></img>
-    
-    
-    <button id="submit" onClick={SendToModel}>Submit</button>
-    <p id="translation">Transition</p>
-</div>
-
-<div>
-    <img></img>
-</div>
-</div>*/
-
 
 
 <div className="fullscreen-container">

@@ -36,27 +36,37 @@ const MyWebcam = () => {
       context.drawImage(videoRef.current, 0, 0, canvas.width, canvas.height);
       const imgUrl = canvas.toDataURL('image/png');
       const img= document.getElementById("picture")
-            img.src = imgUrl
+      img.src = imgUrl
+      console.log(context)
+      fetch("http://localhost:8080/results").then(
+        response => response.json()).then(
+            data => {
+                
+                let ex =  document.getElementById("translation")
+                ex.textContent = data.message
+            }
+        )
     }
-
     
   }
 
   return (
-    /*<div className="component">
-      <video ref={videoRef} autoPlay width="900" height="900"></video>
+<div className="fullscreen-container">
+  <div className="input-div">
+    <h2>Video Capture</h2>
+    <div className="video-container">
+      <video ref={videoRef} autoPlay width="900" height="900" />
       <div className="image-container">
-        <img id="picture" width="900" height="900"></img>
+        <img id="picture" width="900" height="900" alt="Captured" />
       </div>
-      <button type="button" onClick={takePicture}>Take Picture</button>
-    </div>*/
-    <div className="component">
-    <video ref={videoRef} autoPlay width="900" height="900" />
-    <div className="image-container">
-      <img id="picture" width="900" height="900" alt="Captured" />
     </div>
     <button type="button" onClick={takePicture}>Take Picture</button>
+    <p id="translation">Translation</p>
   </div>
+</div>
+
+
+
   );
 };
 
