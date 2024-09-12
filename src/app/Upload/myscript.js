@@ -13,30 +13,18 @@ const MyInput = () => {
 
 
     const SendToModel = async () => {
-        // fetch("http://localhost:8080/results").then(
-        //     response => response.json()).then(
-        //         data => {
-                    
-        //             let ex =  document.getElementById("translation")
-        //             ex.textContent = data.message
-        //         }
-        //     )
 
 
             const formData = new FormData()
-            formData.append('file', img)
-            console.log("pre JSON fetching")
-            console.log(img)
+            
         try {
-           const response = await fetch("http://localhost:8080/results", {
+        const response = await fetch("http://localhost:8080/results", {
             method: 'POST',
             body: formData
-           });
-           console.log(response)
-           const data = await response.json();
-           console.log('Response:', data);
-           let ex =  document.getElementById("translation")
-           ex.textContent = data.message
+        });
+        const data = await response.json();
+        let ex =  document.getElementById("translation")
+        ex.textContent = data.message
             }
         catch(error){
             console.error(error)        }

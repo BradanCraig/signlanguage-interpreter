@@ -23,7 +23,7 @@ const MyWebcam = () => {
 
   }, []);
 
-  const takePicture = () => {
+  const takePicture = async () => {
     if (!videoRef.current || !videoRef.current.videoWidth || !videoRef.current.videoHeight) {
         console.log(videoRef.current)
         console.error('Video not ready');
@@ -34,18 +34,39 @@ const MyWebcam = () => {
       canvas.height = videoRef.current.videoHeight;
       const context = canvas.getContext('2d');
       context.drawImage(videoRef.current, 0, 0, canvas.width, canvas.height);
-      const imgUrl = canvas.toDataURL('image/png');
+      const imgUrl = canvas.toDataURL('image/jpeg');
       const img= document.getElementById("picture")
       img.src = imgUrl
-      console.log(context)
-      fetch("http://localhost:8080/results").then(
-        response => response.json()).then(
-            data => {
-                
-                let ex =  document.getElementById("translation")
-                ex.textContent = data.message
+
+      function dataURLtoFile(dataurl, filename) {
+        var arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
+            bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
+            while(n--){
+                u8arr[n] = bstr.charCodeAt(n);
             }
-        )
+            return new File([u8arr], filename, {type:mime});
+        }
+
+      const formData = new FormData()
+
+      let imgFile=dataURLtoFile(imgUrl, "file.png")
+
+      formData.append('file', imgFile)
+
+  try {
+    const response = await fetch("http://localhost:8080/results", {
+      method: 'POST',
+      body: formData
+    });
+    const data = await response.json();
+    let ex =  document.getElementById("translation")
+    ex.textContent = data.message
+      }
+  catch(error){
+      console.error(error)        }
+
+
+
     }
     
   }
